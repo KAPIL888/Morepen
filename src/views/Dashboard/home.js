@@ -8,7 +8,7 @@ class Home extends Component {
 
 
 componentDidMount(){
- console.log( api.demo.demoAPI())
+// console.log( api.demo.demoAPI())
 }
 
 

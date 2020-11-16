@@ -1,9 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import About from './views/Dashboard/about';
+import Home from './views/Dashboard/home';
+import Header from './views/Common/header';
+import Footer from './views/Common/footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './assets/style.css';
 import './index.css';
 
+const routing = (
+  <Router>
+    <div className="main-wrapper">
+      <Header />
+      <Switch>
+        <Route path='/home' component={Home}></Route>
+        <Route path='/about' component={About}></Route>
+      </Switch>
+      <Footer />
+    </div>
+  </Router>
+);
+
+
 ReactDOM.render(
-  <App />,
+  routing,
   document.getElementById('root')
 );
