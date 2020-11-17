@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 class Footer extends Component {
   render() {
     return (
@@ -80,11 +81,11 @@ class Footer extends Component {
                         </div>
                         <h3 className="footer-title-3">Follow Us on</h3>
                         <div className="footer-info-list-2">
-                          <a href="#"><img src="assets/images/slider/in.png" /></a>
-                          <a href="#"><img src="assets/images/slider/fb.png" /></a>
-                          <a href="#"><img src="assets/images/slider/ins.png" /></a>
-                          <a href="#"><img src="assets/images/slider/you.png" /></a>
-                          <a href="#"><img src="assets/images/slider/tw.png" /></a>
+                          <a href="#"><img src={require("../../assets/images/slider/in.png")} alt="not found" /></a>
+                          <a href="#"><img src={require("../../assets/images/slider/fb.png")} alt="not found" /></a>
+                          <a href="#"><img src={require("../../assets/images/slider/ins.png")} alt="not found"/></a>
+                          <a href="#"><img src={require("../../assets/images/slider/you.png")} alt="not found" /></a>
+                          <a href="#"><img src={require("../../assets/images/slider/tw.png")} alt="not found" /></a>
                         </div>
                       </div>
 
