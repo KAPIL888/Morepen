@@ -14,6 +14,7 @@ const routing = (
     <div className="main-wrapper">
       <Header />
       <Switch>
+      <Route path='/' component={Home}></Route>
         <Route path='/home' component={Home}></Route>
         <Route path='/about' component={About}></Route>
       </Switch>

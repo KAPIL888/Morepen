@@ -42,7 +42,7 @@ class Header extends Component {
                         <div className="col-lg-3">
                         <div className="mobile-logo mobile-logo-width">
                                 <a href="index.html">
-                                    <img alt="" src="assets/images/logo/logo.png"/>
+                                    <img alt="" src={require("../../assets/images/logo/logo.png")}/>
                                 </a>
                             </div>
                         </div>
@@ -69,7 +69,7 @@ class Header extends Component {
                         <div className="col-6">
                             <div className="mobile-logo mobile-logo-width">
                                 <a href="index.html">
-                                    <img alt="" src="assets/images/logo/logo.png"/>
+                                    <img alt="" src={require("../../assets/images/logo/logo.png")}/>
                                 </a>
                             </div>
                         </div>

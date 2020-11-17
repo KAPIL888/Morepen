@@ -129,7 +129,7 @@ class Footer extends Component {
                 </div>
                 <div className="col-md-12 col-12">
                   <div className="footer-payment footer-payment-right  text-center">
-                    <a href="#"><img src="assets/images/slider/payop.png" alt="" /></a>
+                    <a href="#"><img src={require("../../assets/images/slider/payop.png")} alt="" /></a>
                   </div>
                 </div>
               </div>
