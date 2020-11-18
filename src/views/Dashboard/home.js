@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import api from '../../shared/api';
 import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
-import Slider from "react-slick";
 class Home extends Component {
+    componentDidMount(){
+        this.loadShopByCategory();    
+    }
 
-
-
-componentDidMount(){
-// console.log( api.demo.demoAPI())
-}
-
+    loadShopByCategory(){
+        console.log(api.home.shopByCategory());
+    }
  settings = {
   dots: true,
   infinite: true,
@@ -27,7 +25,7 @@ componentDidMount(){
         <div className="slider-area section-padding-1">
         <div className="container-fluida">
             <OwlCarousel items={1} className="main-slider-active-1 owl-carousel slider-nav-position-1 slider-nav-style-1" loop margin={10} nav >
-              <div class="single-main-slider slider-animated-1 bg-img slider-height-1 align-items-center custom-d-flex"><img src={require("../../assets/images/slider/book-hero-image.png")} /></div>
+              <div className="single-main-slider slider-animated-1 bg-img slider-height-1 align-items-center custom-d-flex"><img src={require("../../assets/images/slider/book-hero-image.png")} alt=""/></div>
               </OwlCarousel>
         </div>
         </div>
@@ -45,7 +43,7 @@ componentDidMount(){
                     <div className="col-lg-3 col-md-6">
                         <div className="single-service text-center service-mrg-left mb-30">
                             <div className="service-icon">
-                             <i><img src={require("../../assets/images/brand-logo/1.png")}/></i>
+                             <i><img src={require("../../assets/images/brand-logo/1.png")} alt=""/></i>
                             </div>
                             <div className="service-content">
                                 <h4>Nature</h4>
@@ -56,7 +54,7 @@ componentDidMount(){
                     <div className="col-lg-3 col-md-6">
                         <div className="single-service text-center mb-30">
                             <div className="service-icon">
-                              <i><img src={require("../../assets/images/brand-logo/2.png")}/></i>
+                              <i><img src={require("../../assets/images/brand-logo/2.png")} alt=""/></i>
                             </div>
                             <div className="service-content">
                                 <h4>Science</h4>
@@ -67,7 +65,7 @@ componentDidMount(){
                     <div className="col-lg-3 col-md-6">
                         <div className="single-service text-center mb-30">
                             <div className="service-icon">
-                             <i><img src={require("../../assets/images/brand-logo/3.png")}/></i>
+                             <i><img src={require("../../assets/images/brand-logo/3.png")} alt=""/></i>
                             </div>
                             <div className="service-content">
                                 <h4>Best Quality</h4>
@@ -78,7 +76,7 @@ componentDidMount(){
                     <div className="col-lg-3 col-md-6">
                         <div className="single-service text-center service-mrg-right mb-30">
                             <div className="service-icon">
-                                <i><img src={require("../../assets/images/brand-logo/4.png")}/></i>
+                                <i><img src={require("../../assets/images/brand-logo/4.png")} alt=""/></i>
                             </div>
                             <div className="service-content">
 <h4>Trusted Brand</h4> <p>Oﬀering healthcare  products for more than 3 decades now</p>
@@ -146,7 +144,7 @@ componentDidMount(){
         <div className="slider-area section-padding-1">
         <div className="container-fluida">
             <OwlCarousel items={1} className="main-slider-active-1 owl-carousel slider-nav-position-1 slider-nav-style-1" loop margin={10} nav >
-              <div class="single-main-slider slider-animated-1 bg-img slider-height-1 align-items-center custom-d-flex"><img src={require("../../assets/images/slider/midbanner.jpg")} /></div>
+              <div className="single-main-slider slider-animated-1 bg-img slider-height-1 align-items-center custom-d-flex"><img src={require("../../assets/images/slider/midbanner.jpg")} alt=""/></div>
               </OwlCarousel>
         </div>
         </div>
@@ -172,7 +170,7 @@ componentDidMount(){
                     <div className="col-lg-4 col-md-4">
                         <div className="single-service text-center service-mrg-left mb-30">
                             <div className="service-icon">
-                             <i><img src={require("../../assets/images/brand-logo/11.png")}/></i>
+                             <i><img src={require("../../assets/images/brand-logo/11.png")} alt=""/></i>
                             </div>
                             <div className="service-content">
                                 <h4>FREE SHIPPING</h4>
@@ -183,7 +181,7 @@ componentDidMount(){
                     <div className="col-lg-4 col-md-4">
                         <div className="single-service text-center mb-30">
                             <div className="service-icon">
-                              <i><img src={require("../../assets/images/brand-logo/12.png")}/></i>
+                              <i><img src={require("../../assets/images/brand-logo/12.png")} alt=""/></i>
                             </div>
                             <div className="service-content">
                                 <h4>SECURED ONLINE PAYMENTS</h4>
@@ -194,7 +192,7 @@ componentDidMount(){
                     <div className="col-lg-4 col-md-4">
                         <div className="single-service text-center mb-30">
                             <div className="service-icon">
-                             <i><img src={require("../../assets/images/brand-logo/13.png")}/></i>
+                             <i><img src={require("../../assets/images/brand-logo/13.png")} alt=""/></i>
                             </div>
                             <div className="service-content">
                                 <h4>CASH ON DELIVERY</h4>
@@ -218,7 +216,7 @@ componentDidMount(){
             <div className="service-area    pb-35">
             <div className="container-fluid">
                 <div className="row">                  
-                   <img src={require("../../assets/images/slider/insta.png")}/>
+                   <img className="overflow-hidden" src={require("../../assets/images/slider/insta.png")} alt=""/>
                 </div>
             </div>
         </div>
