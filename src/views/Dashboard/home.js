@@ -121,11 +121,10 @@ class Home extends Component {
                          return <div key={key} className="col-lg-4 col-xl-4 col-md-6 col-sm-6">
                          <div className="product-wrap mb-55">
                             <div className="product-img pro-theme-color-border mb-25">
+                                <img src={value.media[0].thumb} alt={value.name}/>
                                 <a href="#">
-                                    <img src={value.media[0].thumb} alt=""/>
+                                {value.name}
                                 </a>
-                                
-                            
                             </div>
                             
                         </div>
