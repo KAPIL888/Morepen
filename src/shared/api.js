@@ -2,7 +2,6 @@ import axios from '../shared/axios';
 import urls from '../shared/urls';
 
 export default {
-
   demo: {
     demoAPI: () => {
       axios
@@ -15,14 +14,11 @@ export default {
     },
   },
   home: {
-    shopByCategory: () => {
-      axios
+    shopByCategory:() => {
+       return axios
         .get(urls.home.shopByCatgeory)
-        .then(response => {
-          console.log(response)
-        })
-        .catch(() => {
-        })
+        .then(response => response)
+        .catch((error) =>  error)
     },
   }
 

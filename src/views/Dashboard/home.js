@@ -4,13 +4,26 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 class Home extends Component {
+
+    constructor(props)
+    {  
+        super(props)
+        this.state = {
+            categoryList:[]
+        }
+    }
+    
+    loadShopByCategory = async () =>{
+        let response = await api.home.shopByCategory()
+        this.setState({
+            categoryList:response.data.data
+        })
+  }
     componentDidMount(){
         this.loadShopByCategory();    
     }
 
-    loadShopByCategory(){
-        console.log(api.home.shopByCategory());
-    }
+
  settings = {
   dots: true,
   infinite: true,
@@ -100,43 +113,24 @@ class Home extends Component {
          <div className="container-fluid">
 
                 <div className="row">
-                    <div className="col-lg-4 col-xl-4 col-md-6 col-sm-6">
+
+                    {this.state.categoryList.map((value,key)=>{
+                         return <div key={key} className="col-lg-4 col-xl-4 col-md-6 col-sm-6">
                          <div className="product-wrap mb-55">
                             <div className="product-img pro-theme-color-border mb-25">
                                 <a href="#">
-                                    <img src={require("../../assets/images/brand-logo/cat3.jpg")} alt=""/>
+                                    <img src={value.media[0].thumb} alt=""/>
                                 </a>
                                 
-                                
+                            
                             </div>
                             
                         </div>
                     </div>
+                    })}
                     
-                    <div className="col-lg-4 col-xl-4 col-md-6 col-sm-6">
-                       <div className="product-wrap mb-55">
-                            <div className="product-img pro-theme-color-border mb-25">
-                                <a href="#">
-                                     <img src={require("../../assets/images/brand-logo/cat1.jpg")} alt=""/>
-                                </a>
-                                
-                                
-                            </div>
-                            
-                        </div>  
-                    </div>
-                    <div className="col-lg-4 col-xl-4 col-md-6 col-sm-6">
-                       <div className="product-wrap mb-55">
-                            <div className="product-img pro-theme-color-border mb-25">
-                                <a href="#">
-                                    <img src={require("../../assets/images/brand-logo/cat2.jpg")} alt=""/>
-                                </a>
-                                
-                                
-                            </div>
-                            
-                        </div>  
-                    </div>
+                    
+             
                    
                 </div>
             </div>  
