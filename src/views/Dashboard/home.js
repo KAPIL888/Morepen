@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import api from '../../shared/api';
-import OwlCarousel from 'react-owl-carousel';  
+import OwlCarousel from 'react-owl-carousel';
+import HomeSlider from "../../component/sliders/HomeSlider";
+
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
+
 class Home extends Component {
 
     constructor(props)
@@ -356,6 +359,7 @@ class Home extends Component {
                 </div>
             </div>
         </div>
+        <HomeSlider/>
 
         <div className="slider-area mb-50">
             <div className="single-main-slider bg-img slider-height-3 align-items-center custom-d-flex subscribe-footer-style" >
