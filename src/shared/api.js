@@ -20,6 +20,12 @@ export default {
         .then(response => response)
         .catch((error) =>  error)
     },
+    featuredProduct:() => {
+      return axios
+       .get(urls.home.featuredProduct)
+       .then(response => response)
+       .catch((error) =>  error)
+   },
   }
 
 }

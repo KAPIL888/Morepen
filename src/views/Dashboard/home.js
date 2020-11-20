@@ -13,7 +13,8 @@ class Home extends Component {
     {  
         super(props)
         this.state = {
-            categoryList:[]
+            categoryList:[],
+            featuredProductList:[]
         }
     }
     
@@ -23,8 +24,15 @@ class Home extends Component {
             categoryList:response.data.data
         })
   }
+    featuredProduct = async () => {
+        let response = await api.home.featuredProduct()
+        this.setState({
+            featuredProductList: response.data.data
+        });
+    }
     componentDidMount(){
-        this.loadShopByCategory();    
+        this.loadShopByCategory();  
+        this.featuredProduct();  
     }
 
 
@@ -160,19 +168,19 @@ class Home extends Component {
           </div>
         </div>
         <div>
-        <HomeSlider/>
+        <HomeSlider dataParentToChild = {this.state.featuredProductList}/>
         </div>
         
-        <div class="container text-center"><a href="#" class="btn common_bt">VIEW MORE</a></div>
-        <div class="container pt-40">
-            <div class="section-title-5-wrap mb-60">
-                <div class="section-title-5 cst ">
+        <div className="container text-center"><a href="#" className="btn common_bt">VIEW MORE</a></div>
+        <div className="container pt-40">
+            <div className="section-title-5-wrap mb-60">
+                <div className="section-title-5 cst ">
                     <h2>Best Sellers of Dr. Morepen</h2>
                 </div>
             </div>
         </div>
         <div>
-        <HomeSlider/>
+        <HomeSlider dataParentToChild = {this.state.featuredProductList}/>
         </div>
         
       <div className="bookstore-area section-padding-1 bg-img pt-195 pb-205" style={{padding: "70px 0px  0px 0px"}}>
