@@ -9,29 +9,34 @@ class HomeSlider extends Component {
         Scientists: {
             "items": [
                 {
-                    "imgSrc": "https://esumon.online/storage/app/public/22/conversions/snuk-foods-online-specialty-grocery-180917_Snuk_Products_334-removebg-preview-thumb.jpg",
-                    "name": "Niklas Koppernigk",
+                    "imgSrc": "assets/images/slider/p1.png",
+                    "name": "A powerful disinfectant",
                     "des": "19 February 1473 – 24 May 1543"
                 },
                 {
-                    "imgSrc": "https://esumon.online/storage/app/public/22/conversions/snuk-foods-online-specialty-grocery-180917_Snuk_Products_334-removebg-preview-thumb.jpg",
-                    "name": "Galileo Galilei",
+                    "imgSrc": "assets/images/slider/p3.png",
+                    "name": "Immediate relief from<div>1<sup>st</sup> degree burns</div>",
                     "des": "15 February 1564 – 8 January 1642"
                 },
                 {
-                    "imgSrc": "https://esumon.online/storage/app/public/22/conversions/snuk-foods-online-specialty-grocery-180917_Snuk_Products_334-removebg-preview-thumb.jpg",
-                    "name": "Michael Faraday",
+                    "imgSrc": "assets/images/slider/p2.png",
+                    "name": "24hrs tonic for mens!",
                     "des": "22 September 1791 – 25 August 1867"
                 },
                 {
-                    "imgSrc": "https://esumon.online/storage/app/public/22/conversions/snuk-foods-online-specialty-grocery-180917_Snuk_Products_334-removebg-preview-thumb.jpg",
-                    "name": "Marie Curie",
-                    "des": "7 November 1867 – 4 July 1934"
+                    "imgSrc": "assets/images/slider/p1.png",
+                    "name": "A powerful disinfectant",
+                    "des": "19 February 1473 – 24 May 1543"
                 },
                 {
-                    "imgSrc": "https://esumon.online/storage/app/public/22/conversions/snuk-foods-online-specialty-grocery-180917_Snuk_Products_334-removebg-preview-thumb.jpg",
-                    "name": "Albert Einstein",
-                    "des": "14 March 1879 – 18 April 1955"
+                    "imgSrc": "assets/images/slider/p3.png",
+                    "name": "Immediate relief from<div>1<sup>st</sup> degree burns</div>",
+                    "des": "15 February 1564 – 8 January 1642"
+                },
+                {
+                    "imgSrc": "assets/images/slider/p2.png",
+                    "name": "24hrs tonic for mens!",
+                    "des": "22 September 1791 – 25 August 1867"
                 }
             ]
         }
@@ -73,7 +78,7 @@ class HomeSlider extends Component {
 
     let scientists = this.state.Scientists.items.map((item, index) => 
         <div key = {index} >
-            <img style = {imgStyle} src = {item.imgSrc} ></img>
+            <img style = {imgStyle} src ={require(`../../${item.imgSrc}`)} ></img>
             <p style = {textBoxStyle} >{item.name}</p>
             <p style = {textBoxStyle2} >{item.des}</p>
         </div>

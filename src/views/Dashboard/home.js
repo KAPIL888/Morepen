@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../../shared/api';
 import OwlCarousel from 'react-owl-carousel';
 import HomeSlider from "../../component/sliders/HomeSlider";
@@ -122,9 +123,9 @@ class Home extends Component {
                          <div className="product-wrap mb-55">
                             <div className="product-img pro-theme-color-border mb-25">
                                 <img src={value.media[0].thumb} alt={value.name}/>
-                                <a href="#">
+                                <Link to='/products'>
                                 {value.name}
-                                </a>
+                                </Link>
                             </div>
                             
                         </div>
@@ -158,7 +159,22 @@ class Home extends Component {
             </div>
           </div>
         </div>
-     
+        <div>
+        <HomeSlider/>
+        </div>
+        
+        <div class="container text-center"><a href="#" class="btn common_bt">VIEW MORE</a></div>
+        <div class="container pt-40">
+            <div class="section-title-5-wrap mb-60">
+                <div class="section-title-5 cst ">
+                    <h2>Best Sellers of Dr. Morepen</h2>
+                </div>
+            </div>
+        </div>
+        <div>
+        <HomeSlider/>
+        </div>
+        
       <div className="bookstore-area section-padding-1 bg-img pt-195 pb-205" style={{padding: "70px 0px  0px 0px"}}>
             <div className="service-area  section-padding-1  pb-35">
             <div className="container-fluid">
@@ -357,8 +373,7 @@ class Home extends Component {
                   
                 </div>
             </div>
-        </div>
-        <HomeSlider/>
+        </div>       
 
         <div className="slider-area mb-50">
             <div className="single-main-slider bg-img slider-height-3 align-items-center custom-d-flex subscribe-footer-style" >
