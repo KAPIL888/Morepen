@@ -183,7 +183,9 @@ class Home extends Component {
             </div>
         </div>
         <div>
+            {this.state.featuredProductList.length > 0 && 
         <HomeSlider dataParentToChild = {this.state.featuredProductList}/>
+            }
         </div>
         
       <div className="bookstore-area section-padding-1 bg-img pt-195 pb-205" style={{padding: "70px 0px  0px 0px"}}>

@@ -46,6 +46,8 @@ class HomeSlider extends Component {
 
   render() {
 
+    console.log(this.props.dataParentToChild)
+
     let itemsStyle = {
         padding: "0px",
         background: "white",
@@ -84,11 +86,12 @@ class HomeSlider extends Component {
     //     </div>
     // );
     //  console.log(slider);
-    let scientists = this.state.Scientists.items.map((item, index) => 
+    
+    let scientists = this.props.dataParentToChild.map((item, index) => 
         <div key = {index} >
-            <img style = {imgStyle} src ={require(`../../${item.imgSrc}`)} ></img>
+            <img style = {imgStyle} src ={item.media[0].thumb} ></img>
             <p style = {textBoxStyle} >{item.name}</p>
-            <p style = {textBoxStyle2} >{item.des}</p>
+            <p style = {textBoxStyle2} >{item.name}</p>
         </div>
     );
 
