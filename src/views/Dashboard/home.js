@@ -168,7 +168,10 @@ class Home extends Component {
           </div>
         </div>
         <div>
-        <HomeSlider dataParentToChild = {this.state.featuredProductList}/>
+        {
+            this.state.featuredProductList.length !=0 ? <HomeSlider dataParentToChild = {this.state.featuredProductList}/> : null
+        }
+        
         </div>
         
         <div className="container text-center"><a href="#" className="btn common_bt">VIEW MORE</a></div>

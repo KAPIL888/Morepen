@@ -76,15 +76,14 @@ class HomeSlider extends Component {
         fontSize: "12px",
         fontStyle: "italic"
     };
-    let slider = this.props.dataParentToChild.map((item, index)=>{
-        
-        <div key = {index} >
-            <img style = {imgStyle} src ={item.media[0].thumb} ></img>
-            <p style = {textBoxStyle} >{item.name}</p>
-            <p style = {textBoxStyle2} >{item.name}</p>
-        </div>
-    });
-    console.log(slider);
+    // let slider = this.props.dataParentToChild.map((item, index)=>
+    //     <div key = {index} >
+    //         <img style = {imgStyle} src ={item.media[0].thumb} ></img>
+    //         <p style = {textBoxStyle} >{item.name}</p>
+    //         <p style = {textBoxStyle2} >{item.name}</p>
+    //     </div>
+    // );
+    //  console.log(slider);
     let scientists = this.state.Scientists.items.map((item, index) => 
         <div key = {index} >
             <img style = {imgStyle} src ={require(`../../${item.imgSrc}`)} ></img>
