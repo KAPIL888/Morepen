@@ -12,20 +12,20 @@ class Home extends Component {
     constructor(props)
     {  
         super(props)
-        this.state = {
+        this.state={
             categoryList:[],
             featuredProductList:[]
         }
     }
     
-    loadShopByCategory = async () =>{
-        let response = await api.home.shopByCategory()
+    loadShopByCategory=async () =>{
+        let response=await api.home.shopByCategory()
         this.setState({
             categoryList:response.data.data
         })
   }
-    featuredProduct = async () => {
-        let response = await api.home.featuredProduct()
+    featuredProduct=async () => {
+        let response=await api.home.featuredProduct()
         this.setState({
             featuredProductList: response.data.data
         });
@@ -36,7 +36,7 @@ class Home extends Component {
     }
 
 
- settings = {
+ settings={
   dots: true,
   infinite: true,
   speed: 500,
@@ -130,8 +130,11 @@ class Home extends Component {
                          return <div key={key} className="col-lg-4 col-xl-4 col-md-6 col-sm-6">
                          <div className="product-wrap mb-55">
                             <div className="product-img pro-theme-color-border mb-25">
-                                <img src={value.media[0].thumb} alt={value.name}/>
-                                <Link to='/products'>
+                                {value.media.length > 0 ? <img src={value.media[0].thumb} alt={value.name}/>: null}
+                                     <Link to={{
+                                         pathname: "/products",
+                                         data: value
+                                     }} >
                                 {value.name}
                                 </Link>
                             </div>
@@ -169,7 +172,7 @@ class Home extends Component {
         </div>
         <div>
         {
-            this.state.featuredProductList.length !=0 ? <HomeSlider dataParentToChild = {this.state.featuredProductList}/> : null
+            this.state.featuredProductList.length !==0 ? <HomeSlider dataParentToChild={this.state.featuredProductList}/> : null
         }
         
         </div>
@@ -184,7 +187,7 @@ class Home extends Component {
         </div>
         <div>
             {this.state.featuredProductList.length > 0 && 
-        <HomeSlider dataParentToChild = {this.state.featuredProductList}/>
+        <HomeSlider dataParentToChild={this.state.featuredProductList}/>
             }
         </div>
         

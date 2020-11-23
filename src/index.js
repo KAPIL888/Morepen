@@ -4,10 +4,11 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import About from './views/Dashboard/about';
 import Home from './views/Dashboard/home';
 import Products from './views/Dashboard/products';
-import Header from './views/Common/header';
-import Footer from './views/Common/footer';
+import Header from "./component/header";
+import Footer from './component/footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './assets/style.css';
+import './assets/css/style.css';
+import './assets/css/themify-icons.css';
 import './index.css';
 
 const routing = (

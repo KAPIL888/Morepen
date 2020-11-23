@@ -81,11 +81,11 @@ class Footer extends Component {
                         </div>
                         <h3 className="footer-title-3">Follow Us on</h3>
                         <div className="footer-info-list-2">
-                          <a href="#"><img src={require("../../assets/images/slider/in.png")} alt="not found" /></a>
-                          <a href="#"><img src={require("../../assets/images/slider/fb.png")} alt="not found" /></a>
-                          <a href="#"><img src={require("../../assets/images/slider/ins.png")} alt="not found"/></a>
-                          <a href="#"><img src={require("../../assets/images/slider/you.png")} alt="not found" /></a>
-                          <a href="#"><img src={require("../../assets/images/slider/tw.png")} alt="not found" /></a>
+                          <a href="#"><img src={require("../assets/images/slider/in.png")} alt="not found" /></a>
+                          <a href="#"><img src={require("../assets/images/slider/fb.png")} alt="not found" /></a>
+                          <a href="#"><img src={require("../assets/images/slider/ins.png")} alt="not found"/></a>
+                          <a href="#"><img src={require("../assets/images/slider/you.png")} alt="not found" /></a>
+                          <a href="#"><img src={require("../assets/images/slider/tw.png")} alt="not found" /></a>
                         </div>
                       </div>
 
@@ -129,7 +129,7 @@ class Footer extends Component {
                 </div>
                 <div className="col-md-12 col-12">
                   <div className="footer-payment footer-payment-right  text-center">
-                    <a href="#"><img src={require("../../assets/images/slider/payop.png")} alt="" /></a>
+                    <a href="#"><img src={require("../assets/images/slider/payop.png")} alt="" /></a>
                   </div>
                 </div>
               </div>

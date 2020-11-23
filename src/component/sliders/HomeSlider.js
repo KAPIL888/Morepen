@@ -5,50 +5,11 @@ import CarouselSlider from "react-carousel-slider"
 class HomeSlider extends Component {
  constructor(props){
      super(props)
-     this.state = {
-        data: this.props.dataParentToChild,
-        Scientists: {
-            "items": [
-                {
-                    "imgSrc": "assets/images/slider/p1.png",
-                    "name": "A powerful disinfectant",
-                    "des": "19 February 1473 – 24 May 1543"
-                },
-                {
-                    "imgSrc": "assets/images/slider/p3.png",
-                    "name": "Immediate relief from<div>1<sup>st</sup> degree burns</div>",
-                    "des": "15 February 1564 – 8 January 1642"
-                },
-                {
-                    "imgSrc": "assets/images/slider/p2.png",
-                    "name": "24hrs tonic for mens!",
-                    "des": "22 September 1791 – 25 August 1867"
-                },
-                {
-                    "imgSrc": "assets/images/slider/p1.png",
-                    "name": "A powerful disinfectant",
-                    "des": "19 February 1473 – 24 May 1543"
-                },
-                {
-                    "imgSrc": "assets/images/slider/p3.png",
-                    "name": "Immediate relief from<div>1<sup>st</sup> degree burns</div>",
-                    "des": "15 February 1564 – 8 January 1642"
-                },
-                {
-                    "imgSrc": "assets/images/slider/p2.png",
-                    "name": "24hrs tonic for mens!",
-                    "des": "22 September 1791 – 25 August 1867"
-                }
-            ]
-        }
-     }
+     this.state={}
  }
 
   render() {
-
-    console.log(this.props.dataParentToChild)
-
-    let itemsStyle = {
+    let itemsStyle={
         padding: "0px",
         background: "white",
         margin:"0 30px",
@@ -56,12 +17,12 @@ class HomeSlider extends Component {
         borderRadius: "4px"
     };
 
-    let imgStyle = {
+    let imgStyle={
         height: "70%",
         borderBottom: "1px solid #9E9E9E"
     };
     
-    let textBoxStyle = {
+    let textBoxStyle={
         width: "40%",
         top: "290px",
         color: "black",
@@ -70,7 +31,7 @@ class HomeSlider extends Component {
         fontFamily: "Times New Roman"
     };
 
-    let textBoxStyle2 = {
+    let textBoxStyle2={
         width: "70%",
         top: "330px",
         color: "black",
@@ -78,24 +39,24 @@ class HomeSlider extends Component {
         fontSize: "12px",
         fontStyle: "italic"
     };
-    // let slider = this.props.dataParentToChild.map((item, index)=>
-    //     <div key = {index} >
-    //         <img style = {imgStyle} src ={item.media[0].thumb} ></img>
-    //         <p style = {textBoxStyle} >{item.name}</p>
-    //         <p style = {textBoxStyle2} >{item.name}</p>
+    // let slider=this.props.dataParentToChild.map((item, index)=>
+    //     <div key={index} >
+    //         <img style={imgStyle} src ={item.media[0].thumb} ></img>
+    //         <p style={textBoxStyle} >{item.name}</p>
+    //         <p style={textBoxStyle2} >{item.name}</p>
     //     </div>
     // );
     //  console.log(slider);
     
-    let scientists = this.props.dataParentToChild.map((item, index) => 
-        <div key = {index} >
-            <img style = {imgStyle} src ={item.media[0].thumb} ></img>
-            <p style = {textBoxStyle} >{item.name}</p>
-            <p style = {textBoxStyle2} >{item.name}</p>
+    let scientists=this.props.dataParentToChild.map((item, index) => 
+        <div key={index} >
+            <img alt={item.name} style={imgStyle} src={item.media[0].thumb} ></img>
+            <p style={textBoxStyle} >{item.name}</p>
+            <p style={textBoxStyle2} >{item.name}</p>
         </div>
     );
 
-    let btnWrapperStyle = {
+    let btnWrapperStyle={
         position: "relative",
         borderRadius: "50%",
         height: "50px",
@@ -104,7 +65,7 @@ class HomeSlider extends Component {
         textAlign: "center"
     }
 
-    let btnStyle = {
+    let btnStyle={
         display: "inline-block",
         position: "relative",
         top: "50%",
@@ -112,26 +73,26 @@ class HomeSlider extends Component {
         fontSize: "36px"
     }
 
-    let rBtnCpnt = (<div style = {btnWrapperStyle} >
-        <div style = {btnStyle} className = "material-icons" >-</div>
+    let rBtnCpnt=(<div style={btnWrapperStyle} >
+        <div style={btnStyle} className="material-icons" ><img src={require("../../assets/images/slider/arr.png")} alt=""/></div>
     </div>);
 
-    let lBtnCpnt = (<div style = {btnWrapperStyle} >
-        <div style = {btnStyle} className = "material-icons" >-</div>
+    let lBtnCpnt=(<div style={btnWrapperStyle} >
+        <div style={btnStyle} className="material-icons" ><img src={require("../../assets/images/slider/arl.png")} alt=""/></div>
     </div>);        
     
-    let scientistsCard = (<CarouselSlider 
-        sliderBoxStyle = {{height: "450px", width: "80%", background: "transparent"}} 
-        accEle = {{dots: false}}
-        slideCpnts = {scientists} 
-        itemsStyle = {itemsStyle} 
-        buttonSetting = {{placeOn: 'middle-outside'}}
-        rBtnCpnt = {rBtnCpnt}
-        lBtnCpnt = {lBtnCpnt}
+    let scientistsCard=(<CarouselSlider 
+        sliderBoxStyle={{height: "450px", width: "80%", background: "transparent"}} 
+        accEle={{dots: false}}
+        slideCpnts={scientists} 
+        itemsStyle={itemsStyle} 
+        buttonSetting={{placeOn: 'middle-outside'}}
+        rBtnCpnt={rBtnCpnt}
+        lBtnCpnt={lBtnCpnt}
     />);
 
     return (
-      <div style = {{position:"relative", margin: "0 auto", width: "95%"}} >
+      <div style={{position:"relative", margin: "0 auto", width: "95%"}} >
                                 {scientistsCard}
                             </div>
     );

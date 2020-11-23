@@ -26,6 +26,13 @@ export default {
        .then(response => response)
        .catch((error) =>  error)
    },
+  },
+  products:{
+    getProductsByCategory:(search = '') => {
+      return axios
+        .get(urls.products.productsByCatgeory+search)
+        .then(response => response)
+        .catch((error) =>  error)
+    }
   }
-
 }

@@ -1,8 +1,37 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
+import api from '../../shared/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartArrowDown, faSearchPlus, faHeart,facompress, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
 class Products extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            categroyDetails: this.props.location.data,
+            productsList: [],
+            activeGrid:'shop-2' 
+        }
+    }
+    getProductsList = async () => {
+        const search = this.state.categroyDetails ? 'category_id:' + this.state.categroyDetails.id : '';
+        let response = await api.products.getProductsByCategory(search)
+        this.setState({
+            productsList: response.data.data            
+        })
+    }
+    scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+    changeGrid =(gridName) => {
+        console.log(gridName);
+    }
+    componentDidMount(){
+        this.getProductsList();
+        this.scrollToTop();
+    }
   render() {
     return (
       <div>
@@ -22,12 +51,12 @@ class Products extends Component {
               </div>
               <div className="shop-top-bar-right">
                   <div className="shop-tab nav">
-                      <a href="#shop-1" data-toggle="tab"><i className=" ti-view-list-alt "></i></a>
-                      <a href="#shop-2" className="active" data-toggle="tab"><i className=" ti-layout-grid4"></i></a>
-                      <a href="#shop-3" data-toggle="tab"><i className="ti-layout-grid3"></i></a>
+                      <a href="#shop-1" onClick={() => this.setState({ activeGrid: "shop-1"})} className={(this.state.activeGrid === 'shop-1' ? 'active' : '')}><i className=" ti-view-list-alt "></i></a>
+                      <a href="#shop-2" onClick={() => this.setState({ activeGrid: "shop-2"})} className={(this.state.activeGrid === 'shop-2' ? 'active' : '')}><i className=" ti-layout-grid4"></i></a>
+                      <a href="#shop-3" onClick={() => this.setState({ activeGrid: "shop-3"})} className={(this.state.activeGrid === 'shop-3' ? 'active' : '')}><i className="ti-layout-grid3"></i></a>
                   </div>
                   <div className="shop-short-by ml-40">
-                      <span>Default sorting <i className="fa fa-angle-down angle-down"></i></span>
+                      <span>Default sorting <FontAwesomeIcon icon={faAngleDown}></FontAwesomeIcon></span>
                       <ul>
                           <li className="active"><a href="#">Default sorting</a></li>
                           <li><a href="#">Sort by popularity</a></li>
@@ -38,7 +67,7 @@ class Products extends Component {
                       </ul>
                   </div>
                   <div className="shop-filter ml-25">
-                      <a className="shop-filter-active" href="#">Filters <i className="fa fa-angle-down angle-down"></i></a>
+                      <a className="shop-filter-active" href="#">Filters <FontAwesomeIcon icon={faAngleDown}></FontAwesomeIcon></a>
                   </div>
               </div>
           </div>
@@ -106,659 +135,93 @@ class Products extends Component {
               </div>
           </div>
           <div className="tab-content jump-3 pt-30">
-              <div id="shop-1" className="tab-pane padding-55-row-col">
-                  <div className="shop-list-wrap mb-50">
-                      <div className="row">
-                          <div className="col-lg-4 col-md-6 col-sm-6 col-12">
-                              <div className="product-wrap">
-                                  <div className="product-img pro-theme-color-border product-border">
-                                      <a href="product-details.html">
-                                          <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                      </a>
-                                      <div className="shop-list-quickview">
-                                          <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div className="col-lg-8 col-md-6 col-sm-6 col-12">
-                              <div className="shop-list-content">
-                                  <h3><a href="#">Adapt Active Noise Cancelling Headphones</a></h3>
-                                  <div className="pro-list-price">
-                                      <span>$50.00</span>
-                                  </div>
-                                  <p>Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam libero ac turpis pharetra, in vehicula scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
-                                  <div className="product-list-action">
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <div className="pro-list-actioncart">
-                                          <a title="Add to cart" href="#">Add to cart</a>
-                                      </div>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div className="shop-list-wrap mb-50">
-                      <div className="row">
-                          <div className="col-lg-4 col-md-6 col-sm-6 col-12">
-                              <div className="product-wrap">
-                                  <div className="product-img pro-theme-color-border product-border">
-                                      <a href="product-details.html">
-                                          <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                      </a>
-                                      <div className="shop-list-quickview">
-                                          <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div className="col-lg-8 col-md-6 col-sm-6 col-12">
-                              <div className="shop-list-content">
-                                  <h3><a href="#">iPhone 11 Case, Heavy Duty [Military Grade] </a></h3>
-                                  <div className="pro-list-price">
-                                      <span>$50.00</span>
-                                  </div>
-                                  <p>Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam libero ac turpis pharetra, in vehicula scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
-                                  <div className="product-list-action">
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <div className="pro-list-actioncart">
-                                          <a title="Add to cart" href="#">Add to cart</a>
-                                      </div>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div className="shop-list-wrap mb-50">
-                      <div className="row">
-                          <div className="col-lg-4 col-md-6 col-sm-6 col-12">
-                              <div className="product-wrap">
-                                  <div className="product-img pro-theme-color-border product-border">
-                                      <a href="product-details.html">
-                                          <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                      </a>
-                                      <div className="shop-list-quickview">
-                                          <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div className="col-lg-8 col-md-6 col-sm-6 col-12">
-                              <div className="shop-list-content">
-                                  <h3><a href="#">Libratone Track Air+ True Wireless Active Noise</a></h3>
-                                  <div className="pro-list-price">
-                                      <span>$50.00</span>
-                                  </div>
-                                  <p>Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam libero ac turpis pharetra, in vehicula scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
-                                  <div className="product-list-action">
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <div className="pro-list-actioncart">
-                                          <a title="Add to cart" href="#">Add to cart</a>
-                                      </div>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div className="shop-list-wrap mb-50">
-                      <div className="row">
-                          <div className="col-lg-4 col-md-6 col-sm-6 col-12">
-                              <div className="product-wrap">
-                                  <div className="product-img pro-theme-color-border product-border">
-                                      <a href="product-details.html">
-                                         <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                      </a>
-                                      <div className="shop-list-quickview">
-                                          <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div className="col-lg-8 col-md-6 col-sm-6 col-12">
-                              <div className="shop-list-content">
-                                  <h3><a href="#">Acer Aspire C24-865-UA91 AIO Desktop</a></h3>
-                                  <div className="pro-list-price">
-                                      <span>$50.00</span>
-                                  </div>
-                                  <p>Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam libero ac turpis pharetra, in vehicula scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
-                                  <div className="product-list-action">
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <div className="pro-list-actioncart">
-                                          <a title="Add to cart" href="#">Add to cart</a>
-                                      </div>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+          <div className={"tab-pane " + (this.state.activeGrid === 'shop-1' ? 'active' : '')+ " padding-55-row-col"} >
+          {this.state.productsList.map((value, key) => {
+          return <div className="shop-list-wrap mb-50">
+                            <div className="row">
+                                <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                                    <div className="product-wrap">
+                                        <div className="product-img pro-theme-color-border product-border">
+                                            {value.media.length > 0 ? <img src={value.media[0].thumb} alt={value.name}/>: null}
+                                            <div className="shop-list-quickview">
+                                                <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-lg-8 col-md-6 col-sm-6 col-12">
+                                    <div className="shop-list-content">
+                                        <h3><a href="#">{value.name}</a></h3>
+                                        <div className="pro-list-price">
+                                            <span>{value.price}</span>
+                                        </div>
+                                        <p dangerouslySetInnerHTML={{ __html: value.description }}></p>
+                                        <div className="product-list-action">
+                                            <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
+                                            <div className="pro-list-actioncart">
+                                                <a title="Add to cart" href="#">Add to cart</a>
+                                            </div>
+                                            <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+          })}
+          </div>
+          <div className={"tab-pane " + (this.state.activeGrid === 'shop-2' ? 'active' : '')+" padding-55-row-col"} >
+                 <div class="row">
+                    {this.state.productsList.map((value, key) => {
+                        return <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                            <div className="product-wrap mb-55">
+                                <div className="product-img pro-theme-color-border product-border mb-25">
+                                {value.media.length > 0 ? <img src={value.media[0].thumb} alt={value.name}/>: null}
+                                    <span className="d-none badge-green badge-right-20 badge-top-20 badge-ptb-1">NEW</span>
+                                    <div className="product-action product-action-position-1 pro-action-theme-color">
+                                        <a title="Add to Cart" href="#"><FontAwesomeIcon icon={faCartArrowDown} /></a>
+                                        <a data-toggle="modal" data-target="#exampleModal" href="#"><FontAwesomeIcon icon={faSearchPlus} /></a>
+                                        <a title="Add to Wishlist" href="#"><FontAwesomeIcon icon={faHeart} /></a>
+                                        <a title="Add to Compare" href="#"><FontAwesomeIcon icon={facompress} /></a>
+                                    </div>
+                                </div>
+                                <div className="product-content">
+                                    <h4><a href="product-details.html">{value.name}</a></h4>
+                                    <div className="product-price">
+                                        {value.discount_price!=null && value.discount_price>0 ? <span className="old-price">{value.price}</span>: <span className="new-price">{value.price}</span>}
+                                        {value.discount_price!=null && value.discount_price>0 ? <span className="new-price">{value.discount_price}</span>:''}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    })}
+                 </div>
               </div>
-              <div id="shop-2" className="tab-pane active padding-55-row-col">
-                  <div className="row">
-                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                     <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <span className="badge-green badge-right-20 badge-top-20 badge-ptb-1">NEW</span>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">Adapt Active Noise Cancelling Headphones</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$59.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                      <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">iPhone 11 Case, Heavy Duty [Military Grade] </a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$20.99</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                      <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <span className="badge-theme-color badge-right-20 badge-top-20 badge-ptb-1">-25%</span>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">Libratone Track Air+ True Wireless Active Noise</a></h4>
-                                  <div className="product-price">
-                                      <span className="old-price">$59.99</span>
-                                      <span className="new-price">$35.99</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                     <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">Acer Aspire C24-865-UA91 AIO Desktop</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$50.99</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                      <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">iBUYPOWER Gaming PC Computer Desktop</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$60.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                     <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <span className="badge-theme-color badge-right-20 badge-top-20 badge-ptb-1">-30%</span>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">Andoer Gimbal 3-Axis Handheld Stabilizer</a></h4>
-                                  <div className="product-price">
-                                      <span className="old-price">$70.99</span>
-                                      <span className="new-price">$66.99</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                     <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">Acer Aspire TC-885-UA92 Desktop</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$90.99</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                      <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">Polaroid ZIP Wireless Mobile Photo Mini Printer</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$60.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                      <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">CyberpowerPC Gamer Xtreme VR Gaming PC</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$70.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                      <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">External DVD CD Drive, Aluminum</a></h4>
-                                  <div className="product-price">
-                                      <span className="old-price">$70.99</span>
-                                      <span className="new-price">$60.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                      <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">SkyTech Supremacy Gaming Computer</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$60.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                      <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">iPhone 11 Protective Cover with Tempered Film</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$80.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div id="shop-3" className="tab-pane padding-55-row-col">
-                  <div className="row">
-                      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                      <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <span className="badge-green badge-right-20 badge-top-20 badge-ptb-1">NEW</span>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">Adapt Active Noise Cancelling Headphones</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$59.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                       <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">iPhone 11 Case, Heavy Duty [Military Grade] </a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$20.99</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                       <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <span className="badge-theme-color badge-right-20 badge-top-20 badge-ptb-1">-25%</span>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">Libratone Track Air+ True Wireless Active Noise</a></h4>
-                                  <div className="product-price">
-                                      <span className="old-price">$59.99</span>
-                                      <span className="new-price">$35.99</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                       <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">Acer Aspire C24-865-UA91 AIO Desktop</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$50.99</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                      <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">iBUYPOWER Gaming PC Computer Desktop</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$60.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                       <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <span className="badge-theme-color badge-right-20 badge-top-20 badge-ptb-1">-30%</span>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">Andoer Gimbal 3-Axis Handheld Stabilizer</a></h4>
-                                  <div className="product-price">
-                                      <span className="old-price">$70.99</span>
-                                      <span className="new-price">$66.99</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                       <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">Acer Aspire TC-885-UA92 Desktop</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$90.99</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                      <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">Polaroid ZIP Wireless Mobile Photo Mini Printer</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$60.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                       <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">CyberpowerPC Gamer Xtreme VR Gaming PC</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$70.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                       <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">External DVD CD Drive, Aluminum</a></h4>
-                                  <div className="product-price">
-                                      <span className="old-price">$70.99</span>
-                                      <span className="new-price">$60.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                       <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">SkyTech Supremacy Gaming Computer</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$60.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                          <div className="product-wrap mb-55">
-                              <div className="product-img pro-theme-color-border product-border mb-25">
-                                  <a href="product-details.html">
-                                       <img src={require("../../assets/images/product/p3.png")} alt=""/>
-                                  </a>
-                                  <div className="product-action product-action-position-1 pro-action-theme-color">
-                                      <a title="Add to Cart" href="#"><i className="fa fa-cart-arrow-down"></i></a>
-                                      <a data-toggle="modal" data-target="#exampleModal" href="#"><i className="fa fa-search-plus"></i></a>
-                                      <a title="Add to Wishlist" href="#"><i className="fa fa-heart-o"></i></a>
-                                      <a title="Add to Compare" href="#"><i className="fa fa-compress"></i></a>
-                                  </div>
-                              </div>
-                              <div className="product-content">
-                                  <h4><a href="product-details.html">iPhone 11 Protective Cover with Tempered Film</a></h4>
-                                  <div className="product-price">
-                                      <span className="new-price">$80.00</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+              <div className={"tab-pane " + (this.state.activeGrid === 'shop-3' ? 'active' : '')+" padding-55-row-col"} >
+                 <div class="row">
+                    {this.state.productsList.map((value, key) => {
+                        return <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                            <div className="product-wrap mb-55">
+                                <div className="product-img pro-theme-color-border product-border mb-25">
+                                {value.media.length > 0 ? <img src={value.media[0].thumb} alt={value.name}/>: null}
+                                    <span className="d-none badge-green badge-right-20 badge-top-20 badge-ptb-1">NEW</span>
+                                    <div className="product-action product-action-position-1 pro-action-theme-color">
+                                        <a title="Add to Cart" href="#"><FontAwesomeIcon icon={faCartArrowDown} /></a>
+                                        <a data-toggle="modal" data-target="#exampleModal" href="#"><FontAwesomeIcon icon={faSearchPlus} /></a>
+                                        <a title="Add to Wishlist" href="#"><FontAwesomeIcon icon={faHeart} /></a>
+                                        <a title="Add to Compare" href="#"><FontAwesomeIcon icon={facompress} /></a>
+                                    </div>
+                                </div>
+                                <div className="product-content">
+                                    <h4><a href="product-details.html">{value.name}</a></h4>
+                                    <div className="product-price">
+                                        {value.discount_price!=null && value.discount_price>0 ? <span className="old-price">{value.price}</span>: <span className="new-price">{value.price}</span>}
+                                        {value.discount_price!=null && value.discount_price>0 ? <span className="new-price">{value.discount_price}</span>:''}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    })}
+                 </div>
               </div>
               <div className="pro-pagination-style mt-30 text-center">
                   <ul>
@@ -782,14 +245,14 @@ class Products extends Component {
                     </div>
                     <div className="col-lg-9">
                     <div id="mc_embed_signup" className="subscribe-form subscribe-mrg-1">
-                    <form id="mc-embedded-subscribe-form" className="validate subscribe-form-style" novalidate="" target="_blank" name="mc-embedded-subscribe-form" method="post" action="#">
+                    <form id="mc-embedded-subscribe-form" className="validate subscribe-form-style" target="_blank" name="mc-embedded-subscribe-form" method="post" action="#">
                       <div id="mc_embed_signup_scroll" className="mc-form">
-                      <input className="email" type="email" required="" placeholder="Enter your email address..." name="EMAIL" value=""/>
+                      <input className="email" type="email" required="" placeholder="Enter your email address..." name="EMAIL"/>
                       <div className="mc-news" aria-hidden="true">
-                                        <input type="text" value="" tabindex="-1" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef"/>
+                                        <input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef"/>
                                     </div>
                                     <div className="clear">
-                                        <input id="mc-embedded-subscribe" className="button" type="submit" name="subscribe" value="Subscribe"/>
+                                        <input id="mc-embedded-subscribe" className="button" type="submit" name="subscribe"/>
                                     </div>
                       </div>
                     </form>
