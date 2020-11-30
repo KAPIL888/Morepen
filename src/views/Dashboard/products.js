@@ -11,7 +11,8 @@ class Products extends Component {
             categroyDetails: this.props.location.data,
             productsList: [],
             activeGrid:'shop-2',
-            categoryList: []
+            categoryList: [],
+            categoryId: this.props.match.params.id,    
         }
     }
    loadShopByCategory=async () =>{
@@ -23,7 +24,6 @@ class Products extends Component {
   setCategory(input){
     let category = [];
     input.map((value, key) => {
-        console.log("Gourav");
         if (value.parent_id == 0) {
          let childCategory = [];
          input.map((item, index) => {
@@ -38,7 +38,7 @@ class Products extends Component {
     return  category;
   }
     getProductsList = async () => {
-        const search = this.state.categroyDetails ? 'category_id:' + this.state.categroyDetails.id : '';
+        const search = this.state.categoryId ? 'category_id:' + this.state.categoryId : '';
         let response = await api.products.getProductsByCategory(search)
         this.setState({
             productsList: response.data.data            
@@ -78,10 +78,10 @@ class Products extends Component {
                                 <div className="sidebar-widget-categories  mt-50">
                                     <ul>
                                     {this.state.categoryList.map((value,key)=>{
-                                     return <li className={"sw-sub-wrap "+(this.state.categroyDetails === value?'active':'')}><a href="javascript:void(0);" onClick={() => {this.setState({ categroyDetails: value});this.getProductsList();}}>{value.name}<span className="menu-expand"><FontAwesomeIcon icon={faAngleDown}/></span></a>
-                                            <ul className={"sw-sub-menu "+(this.state.categroyDetails === value?'':'d-none')}>
+                                     return <li className={"sw-sub-wrap "+(this.state.categoryId === value.id?'active':'')}><a href="javascript:void(0);" onClick={() => {this.setState({ categroyDetails: value,categoryId: value.id });this.getProductsList();}}>{value.name}<span className="menu-expand"><FontAwesomeIcon icon={faAngleDown}/></span></a>
+                                            <ul className={"sw-sub-menu "+(this.state.categoryId === value.id?'':'d-none')}>
                                             {value.child.map((item,index)=>{
-                                               return <li><a href="javascript:void(0);" onClick={() => {this.setState({ categroyDetails: value});this.getProductsList();}}>{item.name}</a></li>
+                                               return <li><a href="javascript:void(0);" onClick={() => {this.setState({ categroyDetails: value,categoryId: value.id});this.getProductsList();}}>{item.name}</a></li>
                                             })}
                                             </ul>
                                         </li>
@@ -161,8 +161,7 @@ class Products extends Component {
                                         </h4>
                                     </div>
                                     <div id="faq-accordion3" data-parent="#accordion" className="panel-collapse collapse">
-                                        <div className="panel-body">
-                                            
+                                        <div className="panel-body">                                            
                                         </div>
                                     </div>
                                 </div>
@@ -199,7 +198,7 @@ class Products extends Component {
                         <a href="javascript:void(0);"><img src={require("../../assets/images/logo/wish.png")} alt=''/></a>
                     </div>
                     <Link to={{
-                                         pathname: "/product-detail",
+                                         pathname: "/product-detail/"+value.id,
                                          data: value,
                                          categories:this.state.categoryList, 
                                      }} >
@@ -209,13 +208,13 @@ class Products extends Component {
                     <div className="product-content">
                         <h4>
                             <Link to={{
-                                         pathname: "/product-detail",
+                                         pathname: "/product-detail/"+value.id,
                                          data: value,
                                          categories:this.state.categoryList, 
                                      }} >{value.name}</Link>
                         </h4>
                         <div className="product-price">
-                            <span className="new-price">{value.price}</span>
+                            {value.discount_price ? <div><span className="old-price"><del>{value.price}</del></span><span className="new-price">{value.discount_price}</span></div> : <span className="old-price">{value.price}</span>}
                         </div>
                     </div>
                 </div>

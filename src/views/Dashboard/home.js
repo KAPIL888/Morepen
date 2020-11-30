@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../shared/api';
 import OwlCarousel from 'react-owl-carousel';
-import HomeSlider from "../../component/sliders/HomeSlider";
-import Carousel from 'react-bootstrap/Carousel'
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 
@@ -156,8 +154,8 @@ class Home extends Component {
                             <div className="product-img pro-theme-color-border mb-25">
                                 {value.media.length > 0 ? <img src={value.media[0].thumb} alt={value.name}/>: null}
                                      <Link to={{
-                                         pathname: "/products",
-                                         data: value,
+                                         pathname: "/products/"+value.id,
+                                         data: value.id,
                                          categories:this.state.categoryList, 
                                      }} >
                                 {value.name}
@@ -199,16 +197,18 @@ class Home extends Component {
           <OwlCarousel className="owl-theme cateslider" loop margin={10} nav>
             {this.state.featuredProductList.map((value, index) => {
               return (
+                <Link to={{pathname: "/product-detail/"+value.id,data: value}} >
                   <div className="item"> <div className="col-xs-12 col-sm-12 col-md-12">
                       <div className="product c2 cateslider">
                       {value.media.length > 0 ? <img src={value.media[0].url} alt={value.name}/>: null}
                           <span>{value.name}</span>
                           <div className="rating">
-                              <a href="#"><img src="http://agenziaviaggiinnepal.com/DrMorepen/assets/images/slider/rating.png"></img></a>
+                              <img src="http://agenziaviaggiinnepal.com/DrMorepen/assets/images/slider/rating.png"></img>
                           </div>
                       </div>
                   </div>
                   </div>
+                  </Link>
               );
             })}
           </OwlCarousel>
@@ -230,16 +230,18 @@ class Home extends Component {
           <OwlCarousel className="owl-theme cateslider" loop margin={10} nav>
             {this.state.featuredProductList.map((value, index) => {
               return (
+                <Link to={{pathname: "/product-detail/"+value.id,data: value}} >
                   <div className="item"> <div className="col-xs-12 col-sm-12 col-md-12">
                       <div className="product c2 cateslider">
                       {value.media.length > 0 ? <img src={value.media[0].url} alt={value.name}/>: null}
                           <span>{value.name}</span>
                           <div className="rating">
-                              <a href="#"><img src="http://agenziaviaggiinnepal.com/DrMorepen/assets/images/slider/rating.png"></img></a>
+                              <img src="http://agenziaviaggiinnepal.com/DrMorepen/assets/images/slider/rating.png"></img>
                           </div>
                       </div>
                   </div>
                   </div>
+                  </Link>
               );
             })}
           </OwlCarousel>

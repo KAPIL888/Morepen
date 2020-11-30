@@ -13,14 +13,14 @@ import './index.css';
 import ProductDetail from './views/Dashboard/product-detail';
 
 const routing = (
-  <Router>
+  <Router >
     <div className="main-wrapper">
       <Header />
       <Switch>
         <Route path='/home' component={Home}></Route>
-        <Route path='/products' component={Products}></Route>
-        <Route path='/product-detail' component={ProductDetail}></Route>
-        <Route path='/about' component={About}></Route>
+        <Route path='/products/:id' component={Products}></Route>
+        <Route path='/product-detail/:productId' component={ProductDetail}></Route>
+        <Route path='/about-us' component={About}></Route>
         <Route path='/' component={Home}></Route>
       </Switch>
       <Footer />

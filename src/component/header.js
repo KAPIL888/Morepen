@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faUserCircle, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom";
 class Header extends Component {
+    constructor(props) {
+        super(props)
+      }
+      
     render() {
       return (
         <header className="header-area">
@@ -41,9 +46,10 @@ class Header extends Component {
                     <div className="row align-items-center">
                         <div className="col-lg-3">
                         <div className="mobile-logo mobile-logo-width">
-                                <a href="index.html">
-                                    <img alt="" src={require("../assets/images/logo/logo.png")}/>
-                                </a>
+                            <Link to={{
+                                pathname: "/home"}} >
+                                <img alt="" src={require("../assets/images/logo/logo.png")} />
+                            </Link>
                             </div>
                         </div>
                         <div className="col-lg-9">
@@ -52,7 +58,10 @@ class Header extends Component {
                                     <ul>
                                         <li className="has-sub-menu active"><a href="#">SHOP</a> </li>
                                         <li className="has-sub-menu"><a href="#">HEALTH RESOURCES</a></li>
-                                        <li className="has-sub-menu"><a href="#">ABOUT US</a></li>                              
+                                        <li className="has-sub-menu">
+                                              <Link to={{
+                                                  pathname: "/about-us"
+                                              }} >ABOUT US</Link></li>                              
                             
                                     </ul>
                                 </nav>
