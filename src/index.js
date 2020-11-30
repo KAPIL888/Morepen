@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, HashRouter, Switch } from "react-router-dom";
 import About from './views/Dashboard/about';
 import Home from './views/Dashboard/home';
 import Products from './views/Dashboard/products';
@@ -13,7 +13,7 @@ import './index.css';
 import ProductDetail from './views/Dashboard/product-detail';
 
 const routing = (
-  <Router >
+  <HashRouter >
     <div className="main-wrapper">
       <Header />
       <Switch>
@@ -25,7 +25,7 @@ const routing = (
       </Switch>
       <Footer />
     </div>
-  </Router>
+  </HashRouter>
 );
 
 

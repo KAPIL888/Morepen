@@ -197,11 +197,7 @@ class Products extends Component {
                         <a href="javascript:void(0);"><img src={require("../../assets/images/logo/carticon.png")} alt=''/></a>
                         <a href="javascript:void(0);"><img src={require("../../assets/images/logo/wish.png")} alt=''/></a>
                     </div>
-                    <Link to={{
-                                         pathname: "/product-detail/"+value.id,
-                                         data: value,
-                                         categories:this.state.categoryList, 
-                                     }} >
+                    <Link to={`/product-detail/${value.id}`}>
                     {value.media.length > 0 ? <img src={value.media[0].url} alt={value.name}/>: null}
                     <span dangerouslySetInnerHTML={{ __html: value.short_description }}></span>
                     </Link>

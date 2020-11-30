@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    BrowserRouter as Router,
+  HashRouter,
     Route,
   } from "react-router-dom";
 import About from './views/Dashboard/about';
@@ -11,13 +11,13 @@ import Products from './views/Dashboard/products';
 class Routes extends Component {
   render() {
     return (
-      <Router>
+      <HashRouter>
         <Route path='/home' component={Home}></Route>
         <Route path='/products/:id' component={Products}></Route>
         <Route path='/product-detail/:productId' component={ProductDetail}></Route>
         <Route path='/about-us' component={About}></Route>
         <Route path='/' component={Home}></Route>
-      </Router>
+      </HashRouter>
        
     );
   }
