@@ -13,6 +13,7 @@ class Routes extends Component {
          <Router>
                <Route path='/home' component={Home}></Route>
                <Route path='/products' component={Products}></Route>
+               <Route path='/product-detail' component={ProductDetail}></Route>
                <Route path='/about' component={About}></Route>
          </Router>
        

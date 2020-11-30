@@ -28,9 +28,21 @@ export default {
    },
   },
   products:{
+    shopByCategory:() => {
+      return axios
+       .get(urls.products.shopByCatgeory)
+       .then(response => response)
+       .catch((error) =>  error)
+   },
     getProductsByCategory:(search = '') => {
       return axios
         .get(urls.products.productsByCatgeory+search)
+        .then(response => response)
+        .catch((error) =>  error)
+    },
+    getProductsById:(search = '') => {
+      return axios
+        .get(urls.products.productsById+search)
         .then(response => response)
         .catch((error) =>  error)
     }

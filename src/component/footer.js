@@ -12,7 +12,7 @@ class Footer extends Component {
                 <div className="col-lg-12 col-md-12">
                   <div className="footer-ml-30">
                     <div className="row">
-                      <div className="col-xl-3 col-md-6 col-md-6 col-sm-6 col-6">
+                      <div className="col-xl-3 col-md-6 col-md-6 col-sm-6 col-12">
                         <div className="footer-widget mb-55">
                           <p>Dr.Morepen Laboratories Ltd.</p>
                           <p>409, Antriksh Bhawan</p>
@@ -32,7 +32,7 @@ class Footer extends Component {
                                             </div>
                         </div>
                       </div>
-                      <div className="col-xl-3 col-md-6 col-md-6 col-sm-6 col-6">
+                      <div className="col-xl-3 col-md-6 col-md-6 col-sm-6 col-12">
                         <div className="footer-widget mb-55">
                           <h3 className="footer-title-3">SHOP</h3>
 
@@ -79,14 +79,7 @@ class Footer extends Component {
                             </ul>
                           </div>
                         </div>
-                        <h3 className="footer-title-3">Follow Us on</h3>
-                        <div className="footer-info-list-2">
-                          <a href="#"><img src={require("../assets/images/slider/in.png")} alt="not found" /></a>
-                          <a href="#"><img src={require("../assets/images/slider/fb.png")} alt="not found" /></a>
-                          <a href="#"><img src={require("../assets/images/slider/ins.png")} alt="not found"/></a>
-                          <a href="#"><img src={require("../assets/images/slider/you.png")} alt="not found" /></a>
-                          <a href="#"><img src={require("../assets/images/slider/tw.png")} alt="not found" /></a>
-                        </div>
+                        
                       </div>
 
                       <div className="col-xl-3 col-md-6 col-md-6 col-sm-6 col-12">
@@ -106,6 +99,14 @@ class Footer extends Component {
                               <li><a href="#">SHIPPING</a></li>
                             </ul>
                           </div>
+                        </div>
+                        <h3 className="footer-title-3">Follow Us on</h3>
+                        <div className="footer-info-list-2 custom">
+                          <a href="#"><img src={require("../assets/images/slider/in.png")} alt="not found" /></a>
+                          <a href="#"><img src={require("../assets/images/slider/fb.png")} alt="not found" /></a>
+                          <a href="#"><img src={require("../assets/images/slider/ins.png")} alt="not found"/></a>
+                          <a href="#"><img src={require("../assets/images/slider/you.png")} alt="not found" /></a>
+                          <a href="#"><img src={require("../assets/images/slider/tw.png")} alt="not found" /></a>
                         </div>
                       </div>
 

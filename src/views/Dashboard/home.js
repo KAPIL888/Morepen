@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../../shared/api';
 import OwlCarousel from 'react-owl-carousel';
 import HomeSlider from "../../component/sliders/HomeSlider";
-
+import Carousel from 'react-bootstrap/Carousel'
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 
@@ -14,6 +14,7 @@ class Home extends Component {
         super(props)
         this.state={
             categoryList:[],
+            productList:[],
             featuredProductList:[]
         }
     }
@@ -24,12 +25,12 @@ class Home extends Component {
             categoryList:response.data.data
         })
   }
-    featuredProduct=async () => {
+  featuredProduct=async () => {
         let response=await api.home.featuredProduct()
         this.setState({
             featuredProductList: response.data.data
         });
-    }
+  }
     componentDidMount(){
         this.loadShopByCategory();  
         this.featuredProduct();  
@@ -50,8 +51,31 @@ class Home extends Component {
         <div className="slider-area section-padding-1">
         <div className="container-fluida">
             <OwlCarousel items={1} className="main-slider-active-1 owl-carousel slider-nav-position-1 slider-nav-style-1" loop margin={10} nav >
-              <div className="single-main-slider slider-animated-1 bg-img slider-height-1 align-items-center custom-d-flex"><img src={require("../../assets/images/slider/book-hero-image.png")} alt=""/></div>
+              <div className="single-main-slider slider-animated-1 bg-img slider-height-1 align-items-center custom-d-flex">
+                  <img src={require("../../assets/images/slider/book-hero-image.png")} alt=""/>
+               </div>
               </OwlCarousel>
+
+              
+
+              {/* <Carousel prevIcon={<span aria-hidden="true" className="carousel-control-prev-icon d-none" />} 
+              nextIcon={<span aria-hidden="true" className="carousel-control-prev-icon d-none" />}>
+  <Carousel.Item interval={1000} controls={false}>
+  <div className="single-main-slider slider-animated-1 bg-img slider-height-1 align-items-center custom-d-flex">
+                  <img src={require("../../assets/images/slider/book-hero-image.png")} alt=""/>
+               </div>
+  </Carousel.Item>
+  <Carousel.Item interval={500}>
+  <div className="single-main-slider slider-animated-1 bg-img slider-height-1 align-items-center custom-d-flex">
+                  <img src={require("../../assets/images/slider/book-hero-image.png")} alt=""/>
+               </div>
+  </Carousel.Item>
+  <Carousel.Item>
+  <div className="single-main-slider slider-animated-1 bg-img slider-height-1 align-items-center custom-d-flex">
+                  <img src={require("../../assets/images/slider/book-hero-image.png")} alt=""/>
+               </div>
+   </Carousel.Item>
+</Carousel> */}
         </div>
         </div>
         <div className="bookstore-area section-padding-1 bg-img pt-195 pb-205" style={{padding: "70px 0px"}}>
@@ -133,7 +157,8 @@ class Home extends Component {
                                 {value.media.length > 0 ? <img src={value.media[0].thumb} alt={value.name}/>: null}
                                      <Link to={{
                                          pathname: "/products",
-                                         data: value
+                                         data: value,
+                                         categories:this.state.categoryList, 
                                      }} >
                                 {value.name}
                                 </Link>
@@ -168,12 +193,29 @@ class Home extends Component {
                 </ul>
               </nav>
             </div>
+
           </div>
+          {this.state.featuredProductList.length && (
+          <OwlCarousel className="owl-theme cateslider" loop margin={10} nav>
+            {this.state.featuredProductList.map((value, index) => {
+              return (
+                  <div className="item"> <div className="col-xs-12 col-sm-12 col-md-12">
+                      <div className="product c2 cateslider">
+                      {value.media.length > 0 ? <img src={value.media[0].url} alt={value.name}/>: null}
+                          <span>{value.name}</span>
+                          <div className="rating">
+                              <a href="#"><img src="http://agenziaviaggiinnepal.com/DrMorepen/assets/images/slider/rating.png"></img></a>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+              );
+            })}
+          </OwlCarousel>
+        )}
         </div>
         <div>
-        {
-            this.state.featuredProductList.length !==0 ? <HomeSlider dataParentToChild={this.state.featuredProductList}/> : null
-        }
+        
         
         </div>
         
@@ -184,11 +226,27 @@ class Home extends Component {
                     <h2>Best Sellers of Dr. Morepen</h2>
                 </div>
             </div>
+            {this.state.featuredProductList.length && (
+          <OwlCarousel className="owl-theme cateslider" loop margin={10} nav>
+            {this.state.featuredProductList.map((value, index) => {
+              return (
+                  <div className="item"> <div className="col-xs-12 col-sm-12 col-md-12">
+                      <div className="product c2 cateslider">
+                      {value.media.length > 0 ? <img src={value.media[0].url} alt={value.name}/>: null}
+                          <span>{value.name}</span>
+                          <div className="rating">
+                              <a href="#"><img src="http://agenziaviaggiinnepal.com/DrMorepen/assets/images/slider/rating.png"></img></a>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+              );
+            })}
+          </OwlCarousel>
+        )}
         </div>
         <div>
-            {this.state.featuredProductList.length > 0 && 
-        <HomeSlider dataParentToChild={this.state.featuredProductList}/>
-            }
+            
         </div>
         
       <div className="bookstore-area section-padding-1 bg-img pt-195 pb-205" style={{padding: "70px 0px  0px 0px"}}>

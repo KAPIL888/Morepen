@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/style.css';
 import './assets/css/themify-icons.css';
 import './index.css';
+import ProductDetail from './views/Dashboard/product-detail';
 
 const routing = (
   <Router>
@@ -18,6 +19,7 @@ const routing = (
       <Switch>
         <Route path='/home' component={Home}></Route>
         <Route path='/products' component={Products}></Route>
+        <Route path='/product-detail' component={ProductDetail}></Route>
         <Route path='/about' component={About}></Route>
         <Route path='/' component={Home}></Route>
       </Switch>
