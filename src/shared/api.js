@@ -13,6 +13,19 @@ export default {
         })
     },
   },
+
+  auth:{
+    login: (data) => {
+      return axios({
+        method: "POST",
+        url:urls.auth.login,
+        data: data,
+      //  headers: { [AUTH_HEADER]: xAuthToken },
+      })
+        .then((res) => res.data)
+        .catch((err) => err);
+    },
+  },
   home: {
     shopByCategory:() => {
        return axios

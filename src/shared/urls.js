@@ -12,5 +12,8 @@ export default {
         shopByCatgeory: 'https://esumon.online/morepen/public/api/categories',
         productsByCatgeory: 'https://esumon.online/morepen/public/api/products?with=market&search=',
         productsById: 'https://esumon.online/morepen/public/api/products'
-    }
+    },
+    auth:{
+        login:'https://esumon.online/api/login'
+    },
 }
