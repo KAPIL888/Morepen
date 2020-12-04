@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../../component/footer';
+import Header from '../../component/header';
 
 
 class Register extends Component {
   render() {
     return (
-
+        <div className="main-wrapper"> 
+        <Header />
       <div class="form-login-body signbanner">
       <div class="container-fluid">
       <div class="row">
@@ -70,6 +73,8 @@ class Register extends Component {
       </div>
   </div>
    </div>
+   <Footer />
+  </div>
     );
   }
 }

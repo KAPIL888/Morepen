@@ -1,9 +1,13 @@
 import React from 'react';
 import { Component } from "react";
+import Footer from '../../component/footer';
+import Header from '../../component/header';
 
 class RegisterOtp extends Component {
     render() {
         return (
+            <div className="main-wrapper"> 
+        <Header />
 <div class="form-login-body signbanner">
      <div className="container-fluid">
         <div className="row">
@@ -56,7 +60,9 @@ class RegisterOtp extends Component {
             </div>
         </div>
         </div>
-    </div>);
+    </div>
+    <Footer />
+  </div>);
     }
 }
 export default RegisterOtp;

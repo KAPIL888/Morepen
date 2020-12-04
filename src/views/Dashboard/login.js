@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../../component/footer';
+import Header from '../../component/header';
 import api from '../../shared/api';
 
 
@@ -32,6 +34,8 @@ class Login extends Component {
 
   render() {
     return (
+        <div className="main-wrapper"> 
+        <Header />
       <div class="form-login-body">
       <div class="container-fluid">
       <div class="row">
@@ -82,6 +86,8 @@ class Login extends Component {
       </div>
   </div>
     </div>
+  <Footer />
+  </div>
     );
   }
 }
