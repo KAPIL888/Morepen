@@ -14,21 +14,21 @@ class Header extends Component {
                 <div className="container">
                     <div className="header-ptb-2">
                         <div className="row align-items-center">
-                            <div className="col-lg-10 col-sm-9">
+                            <div className="col-lg-11 col-sm-9">
                                 <nav className="nabs">
                                     <ul>
                                         <li><a className="active" href="#">Customer Care</a></li>
-                                        <li><a href="#">Login/Register</a></li>
-                                        <li><a href="#">My Basket</a></li>
+                                        <li><Link to={{pathname: "/login"}} >Login/Register</Link></li>
+                                        <li><a href="#">My Basket <FontAwesomeIcon icon={faCartArrowDown} /></a></li>
                                         
                                     </ul>
                                 </nav>
                             </div>
                             
-                            <div className="col-lg-2 col-sm-3">
+                            <div className="col-lg-1 col-sm-3">
                                 <div className="header-right-wrap header-right-flex">
                                 <div className="same-style same-style-font-dec same-style-mrg-dec-2">
-                                        <a className="cart-active" href="#"><FontAwesomeIcon icon={faCartArrowDown} /></a>
+                                        <a className="cart-active" href="#"></a>
                                     </div>
                                     <div className="same-style same-style-font-dec same-style-mrg-dec-2">
                                         <a href="#"><FontAwesomeIcon icon={faSearch} /></a>

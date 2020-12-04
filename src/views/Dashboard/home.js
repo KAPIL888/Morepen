@@ -4,6 +4,8 @@ import api from '../../shared/api';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
+import Header from '../../component/header';
+import Footer from '../../component/footer';
 
 class Home extends Component {
 
@@ -45,6 +47,8 @@ class Home extends Component {
 
   render() {
     return (
+        <div className="main-wrapper">   
+        <Header />
       <div className="main-wrapper">
         <div className="slider-area section-padding-1">
         <div className="container-fluida">
@@ -200,7 +204,7 @@ class Home extends Component {
                 <Link to={{pathname: "/product-detail/"+value.id,data: value}} >
                   <div className="item"> <div className="col-xs-12 col-sm-12 col-md-12">
                       <div className="product c2 cateslider">
-                      {value.media.length > 0 ? <img src={value.media[0].url} alt={value.name}/>: null}
+                      {value.media.length > 0 ? <img style={{height:"300px"}} src={value.media[0].url} alt={value.name}/>: null}
                           <span>{value.name}</span>
                           <div className="rating">
                               <img src="http://agenziaviaggiinnepal.com/DrMorepen/assets/images/slider/rating.png"></img>
@@ -233,7 +237,7 @@ class Home extends Component {
                 <Link to={{pathname: "/product-detail/"+value.id,data: value}} >
                   <div className="item"> <div className="col-xs-12 col-sm-12 col-md-12">
                       <div className="product c2 cateslider">
-                      {value.media.length > 0 ? <img src={value.media[0].url} alt={value.name}/>: null}
+                      {value.media.length > 0 ? <img style={{height:"300px"}} src={value.media[0].url} alt={value.name}/>: null}
                           <span>{value.name}</span>
                           <div className="rating">
                               <img src="http://agenziaviaggiinnepal.com/DrMorepen/assets/images/slider/rating.png"></img>
@@ -459,7 +463,8 @@ class Home extends Component {
             </div>
         </div>
         </div>
-       
+        <Footer />
+       </div>
     );
   }
 }

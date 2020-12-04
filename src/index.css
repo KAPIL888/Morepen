@@ -245,6 +245,10 @@ background-color: #ff6e21;
     color: #fff;
     font-size: 20px !important;
 }
+.footer-menu_menu_tab ul li a {
+  color: #000;
+  font-size: 20px !important;
+}
 .product-dec-small-style2 .product-dec-small {
   margin: 0px;
   cursor: pointer;
@@ -257,6 +261,10 @@ img {
 }
 .footer-menu_menu ul li a {
   color: #fff;
+  font-size: 16px !important;
+}
+.footer-menu_menu_tab ul li a {
+  color: #000;
   font-size: 16px !important;
 }
 .product-details-content h2 {

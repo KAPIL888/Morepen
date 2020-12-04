@@ -3,6 +3,8 @@ import api from '../../shared/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
+import Footer from '../../component/footer';
+import Header from '../../component/header';
 
 class Products extends Component {
     constructor(props){
@@ -61,7 +63,8 @@ class Products extends Component {
     }
   render() {
     return (
-    <div>
+        <div className="main-wrapper">   
+    <Header />
             <div className="slider-area mb-50">
                 <div className="single-main-slider cstbg-img bg-img slider-height-3 align-items-center custom-d-flex product-top-banner">
                 </div>
@@ -188,26 +191,21 @@ class Products extends Component {
                         </ul>
                     </div>
                 </div>
-
             </div>
             {this.state.productsList.map((value, key) => {
-            return <div className={this.state.activeGrid === 'shop-1' ? 'col-xs-12 col-sm-12 col-md-12' : this.state.activeGrid === 'shop-2' ? 'col-xs-4 col-sm-4 col-md-4' : 'col-xs-5 col-sm-5 col-md-5'}>
+            return <div className={this.state.activeGrid === 'shop-1' ? 'col-xs-12 col-sm-12 col-md-12' : this.state.activeGrid === 'shop-2' ? 'col-xs-4 col-sm-4 col-md-4 col-12' : 'col-xs-5 col-sm-5 col-md-5'}>
                 <div className="product c1">
                     <div className="action_list">
-                        <a href="javascript:void(0);"><img src={require("../../assets/images/logo/carticon.png")} alt=''/></a>
-                        <a href="javascript:void(0);"><img src={require("../../assets/images/logo/wish.png")} alt=''/></a>
+                        <a href="javascript:void(0);"><div className="productimg1"><img src={require("../../assets/images/logo/carticon.png")} alt=''/></div></a>
+                        <a href="javascript:void(0);"><div className="productimg1"><img src={require("../../assets/images/logo/wish.png")} alt=''/></div></a>
                     </div>
-                    <Link to={`/product-detail/${value.id}`}>
-                    {value.media.length > 0 ? <img src={value.media[0].url} alt={value.name}/>: null}
+                    <Link to={`/product-detail/${value.id}`}><div className="productimg">
+                    {value.media.length > 0 ? <img className="img-fluid cstmd" style={{height:""}} src={value.media[0].url} alt={value.name}/>: null}</div>
                     <span dangerouslySetInnerHTML={{ __html: value.short_description }}></span>
                     </Link>
                     <div className="product-content">
                         <h4>
-                            <Link to={{
-                                         pathname: "/product-detail/"+value.id,
-                                         data: value,
-                                         categories:this.state.categoryList, 
-                                     }} >{value.name}</Link>
+                        <Link to={`/product-detail/${value.id}`}>{value.name}</Link>
                         </h4>
                         <div className="product-price">
                             {value.discount_price ? <div><span className="old-price"><del>{value.price}</del></span><span className="new-price">{value.discount_price}</span></div> : <span className="old-price">{value.price}</span>}
@@ -256,6 +254,7 @@ class Products extends Component {
             </div>
         </div>
     </div>
+    <Footer />
     </div>
     );
   }

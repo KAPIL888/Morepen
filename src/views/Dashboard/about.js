@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import Footer from '../../component/footer';
+import Header from '../../component/header';
 
 
 class About extends Component {
   
   render() {
     return (
-      <div>
+      <div className="main-wrapper">   
+      <Header />
         <div className="slider-area section-padding-1">
             <img src={require("../../assets/images/slider/About-Us.png")}></img>
         </div>
@@ -334,7 +336,7 @@ class About extends Component {
                 <a href="#" className="btn common_bt mt-20">SUBSCRIBE TO UPDATE</a></div>
             </div>
         </div>
-
+<Footer />
         </div>
       
     );

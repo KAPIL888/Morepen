@@ -17,8 +17,7 @@ class Routes extends Component {
         <Route path='/product-detail/:productId' component={ProductDetail}></Route>
         <Route path='/about-us' component={About}></Route>
         <Route path='/' component={Home}></Route>
-      </HashRouter>
-       
+      </HashRouter>      
     );
   }
 }
