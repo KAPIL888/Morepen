@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faUserCircle, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
+import {getUserInfo} from '../shared/helpers';
 class Header extends Component {
     constructor(props){
         super(props)
@@ -11,7 +12,7 @@ class Header extends Component {
     }
     setUserInfo = () =>{
         this.setState({
-         userInfo:JSON.parse(localStorage.getItem("userInfo"))
+         userInfo:getUserInfo()
         })
     }
     logout(){
@@ -20,9 +21,11 @@ class Header extends Component {
         this.setState({
             userInfo:null
         });
-        this.props.history.push("/home");
+       window.location.reload()
     }
     componentDidMount(){
+     
+    
        this.setUserInfo();
     }
  

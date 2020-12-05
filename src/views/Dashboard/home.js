@@ -48,7 +48,7 @@ class Home extends Component {
   render() {
     return (
         <div className="main-wrapper">   
-        <Header />
+        <Header {...this.props}/>
       <div className="main-wrapper">
         <div className="slider-area section-padding-1">
         <div className="container-fluida">
