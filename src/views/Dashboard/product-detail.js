@@ -493,7 +493,7 @@ class ProductDetail extends Component {
  </div> 
  <div className="container">
  {this.state.featuredProductList.length && (
-          <OwlCarousel className="owl-theme cateslider" loop margin={10} nav>
+          <OwlCarousel className="owl-theme cateslider" items={4} loop margin={10} nav>
             {this.state.featuredProductList.map((value, index) => {
               return (
                 <Link to={{pathname: "/product-detail/"+value.id,data: value}} >
@@ -523,7 +523,7 @@ class ProductDetail extends Component {
         </div>
         <div className="container">
         {this.state.featuredProductList.length && (
-          <OwlCarousel className="owl-theme cateslider" loop margin={10} nav>
+          <OwlCarousel className="owl-theme cateslider" items={4} loop margin={10} nav>
             {this.state.featuredProductList.map((value, index) => {
               return (
                 <Link to={{pathname: "/product-detail/"+value.id,data: value}} >

@@ -25,6 +25,17 @@ export default {
         .then((res) => res.data)
         .catch((err) => err);
     },
+
+    register: (data) => {
+      return axios({
+        method: "POST",
+        url:urls.auth.register,
+        data: data,
+      //  headers: { [AUTH_HEADER]: xAuthToken },
+      })
+        .then((res) => res.data)
+        .catch((err) => err);
+    },
   },
   home: {
     shopByCategory:() => {

@@ -14,6 +14,7 @@ export default {
         productsById: 'https://esumon.online/morepen/public/api/products'
     },
     auth:{
-        login:'https://esumon.online/morepen/public/api/login'
+        login:'https://esumon.online/morepen/public/api/login',
+        register:'https://esumon.online/morepen/public/api/register'
     },
 }
