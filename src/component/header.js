@@ -3,9 +3,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faUserCircle, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 class Header extends Component {
-    constructor(props) {
+    constructor(props){
         super(props)
-      }
+        this.state = {
+            userInfo:null
+        }
+    }
+    setUserInfo = () =>{
+        this.setState({
+         userInfo:JSON.parse(localStorage.getItem("userInfo"))
+        })
+    }
+    logout(){
+        console.log("isclicked")
+        localStorage.clear();
+        this.setState({
+            userInfo:null
+        });
+        this.props.history.push("/home");
+    }
+    componentDidMount(){
+       this.setUserInfo();
+    }
+ 
       
     render() {
       return (
@@ -18,7 +38,11 @@ class Header extends Component {
                                 <nav className="nabs">
                                     <ul>
                                         <li><a className="active" href="#">Customer Care</a></li>
-                                        <li><Link to={{pathname: "/login"}} >Login/Register</Link></li>
+                                        <li>
+                                            {
+                                             this.state.userInfo!=null?<a onClick={() => {this.logout();}} href="javascript:void(0);">Logout</a>:<Link to={{pathname: "/login"}} >Login/Register</Link>
+                                            }
+                                            </li>
                                         <li><a href="#">My Basket <FontAwesomeIcon icon={faCartArrowDown} /></a></li>
                                         
                                     </ul>

@@ -4,6 +4,20 @@ import Footer from "../../component/footer";
 import Header from "../../component/header";
 
 class MyAccount extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            userInfo:{}
+        }
+    }
+    setUserInfo = () =>{
+        this.setState({
+         userInfo:JSON.parse(localStorage.getItem("userInfo"))
+        })
+    }
+    componentDidMount(){
+       this.setUserInfo();
+    }
     render() {
         return (
             <div className="main-wrapper">   
@@ -14,7 +28,7 @@ class MyAccount extends Component {
             <div className="product-wrap mb-55">
                 <div className="dumb-25">
                     <h2 className="orang">Account</h2>
-                    <h3>Subramala thode sahukar</h3>
+                    <h3>{this.state.userInfo.name}</h3>
                 </div>
             </div>
 
@@ -84,7 +98,7 @@ class MyAccount extends Component {
 
                             </div>
 
-                            <div className="col-md-7">Subramala thode sahukar</div>
+                            <div className="col-md-7">{this.state.userInfo.name}</div>
                         </div>
                         <div className="row mb-20">
                             <div className="col-md-5">
@@ -93,7 +107,7 @@ class MyAccount extends Component {
 
                             </div>
 
-                            <div className="col-md-7">01222-22-222</div>
+                            <div className="col-md-7">{this.state.userInfo.phone}</div>
                         </div>
                         <div className="row mb-20">
                             <div className="col-md-5">
@@ -102,7 +116,7 @@ class MyAccount extends Component {
 
                             </div>
 
-                            <div className="col-md-7">Subramala220022@yahoo.com</div>
+                            <div className="col-md-7">{this.state.userInfo.email}</div>
                         </div>
                         <div className="row mb-20">
                             <div className="col-md-5">

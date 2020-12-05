@@ -26633,13 +26633,7 @@ body .nabs li {
   .size { margin: 20px 0; }
   .edit { float: right; margin-top: 10px; }
   
-  @media all and (max-width: 767px) { .carousel-container #carousel-thumbs img {
-  border-width: 3px; }
-  .d-flexwrap.flex-wrapwrap.col-lg-9 .col-xs-4.col-sm-4.col-md-4 {
-  display: inline-block;
-  width: 100%;
-}
-  }
+
   @media all and (max-width: 576px) {.carousel-container #carousel-thumbs {
   background: #ccccce;}}
   .thumb { border:1px solid #eee; margin:5px 9px; }
@@ -26916,7 +26910,7 @@ body .orang {
   height: 100%;
 }
 .form-login-body .login-desk .row {
-  height: 100vh;
+  height: 100%;
 }
 .col-md-6.detail-box {
   justify-content: center;
@@ -27141,3 +27135,42 @@ header .navigation .logo img {
   font-size: 17px;
   text-transform: uppercase;
 }
+.graybg{ background: #EAEAEA; }
+.rightbar.p-20 {
+  margin-top: 20px;
+}
+.innergray {
+  text-align: center;
+  padding: 20px;
+}
+.text_innergray img {
+  max-width: 300px;
+}
+.title_main span {
+  display: block;
+  font-size: 17px;
+  line-height: 30px;
+}
+.title_main {
+  margin-top: 20px;
+}
+  @media all and (max-width: 767px) { .carousel-container #carousel-thumbs img {
+  border-width: 3px; }
+  .d-flexwrap.flex-wrapwrap.col-lg-9 .col-xs-4.col-sm-4.col-md-4 {
+  display: inline-block;
+  width: 100%;
+}
+.form-login-body.signbanner .col-md-6.loginform {
+  text-align: center;
+  color: #FFF;
+  padding: 34px;
+  margin: 10px;
+  background: #fff;
+  -ms-flex: 0 0 95%;
+  flex: 0 0 95%;
+  max-width: 95%;
+}
+.rightbar.pd-40 {
+  padding: 0px;
+}
+  }

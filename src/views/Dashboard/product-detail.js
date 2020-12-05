@@ -4,9 +4,10 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 import ImageGallery from 'react-image-gallery';
-import { Link } from 'react-router-dom';
 import Footer from '../../component/footer';
 import Header from '../../component/header';
+import { HashLink as Link } from 'react-router-hash-link';
+
 class ProductDetail extends Component {
     constructor(props){
         super(props)
@@ -165,14 +166,26 @@ class ProductDetail extends Component {
                         <div className="col-lg-12">
                             <div className="footer-menu">
                                 <nav className="footer-menu_menu_tab">
-                                    <ul>
-                                        <li><a href="javascript:void(0);" onClick={() => {this.setState({ tabActivate: 0 })}}>PRODUCT DESCRIPTION</a></li>
-                                        <li><a href="javascript:void(0);" onClick={() => {this.setState({ tabActivate: 1 })}}>BENEFITS</a></li>
-                                        <li><a href="javascript:void(0);" onClick={() => {this.setState({ tabActivate: 2 })}}>INGREDIENTS</a></li>
-                                        <li><a href="javascript:void(0);" onClick={() => {this.setState({ tabActivate: 3 })}}>NUTRITIONAL INFORMATION</a></li>
-                                        <li><a href="javascript:void(0);" onClick={() => {this.setState({ tabActivate: 4 })}}>DOSAGE</a></li>
-                                        <li><a href="javascript:void(0);" onClick={() => {this.setState({ tabActivate: 5 })}}>PRECAUTIONS</a></li>
-                                    </ul>
+                                <ul>
+                                            <li>
+                                                <Link to="#productDescription">PRODUCT DESCRIPTION</Link>
+                                            </li>
+                                            <li>
+                                                <Link to="#benefits">BENEFITS</Link>
+                                            </li>
+                                            <li>
+                                                <Link to="#ingredients">INGREDIENTS</Link>
+                                            </li>
+                                            <li>
+                                                <Link to="#nutriInfo">NUTRITIONAL INFORMATION</Link>
+                                            </li>
+                                            <li>
+                                                <Link to="#dosage">DOSAGE</Link>
+                                            </li>
+                                            <li>
+                                                <Link to="#precautions">PRECAUTIONS</Link>
+                                            </li>
+                                        </ul>
                                 </nav>
                             </div>
                         </div>
@@ -181,7 +194,7 @@ class ProductDetail extends Component {
                 </div>
             </div>
         </header>
-        <div className={"slider-area mb-50 "+(this.state.tabActivate===0?'':'d-none')}>
+        <div className={"slider-area mb-50 "} id="productDescription">
             <div className="single-main-slider bg-img slider-height-3 align-items-center custom-d-flex p-description">
 
               <div className="container text-center">
@@ -191,7 +204,7 @@ class ProductDetail extends Component {
         </div>
 
    </div> 
-   <div className={"slider-area mb-50 "+(this.state.tabActivate===1?'':'d-none')}>
+   <div className={"slider-area mb-50 "} id="benefits">
             <div className="single-main-slider bg-img slider-height-3 align-items-center custom-d-flex" style={{backgroundSize:"100%", backgroundRepeat: "no-repeat", height: "auto",padding: "30px", paddingTop:"50px",backgroundPosition: "top center",marginBottom: "50px"}}>
               <div className="container text ">
                 <div className="row">
@@ -204,7 +217,7 @@ class ProductDetail extends Component {
 
   
 </div>
-<div className={"store-area pt-5 pb-50 text-center "+(this.state.tabActivate===2?'':'d-none')}>
+<div className={"store-area pt-5 pb-50 text-center "} id="ingredients">
     <h2 className="uppercase" style={{color: "#E67F1A"}}>INGREDIENTS</h2>
     <h4 className="uppercase mb-30" >HIGHEST QUALITY HERBS</h4>
             <div className="container">
@@ -212,7 +225,7 @@ class ProductDetail extends Component {
                 </div>
             </div>
         </div>
-        <div className={"slider-area mb-50 "+(this.state.tabActivate===3?'':'d-none')}>
+        <div className={"slider-area mb-50 "} id="nutriInfo">
             <div className="single-main-slider bg-img slider-height-3 align-items-center custom-d-flex p-description">
 
               <div className="container text-center">
@@ -222,7 +235,7 @@ class ProductDetail extends Component {
         </div>
 
    </div> 
-        <div className={"single-main-slider bg-img slider-height-3 align-items-center custom-d-flex "+(this.state.tabActivate===4?'':'d-none')} style={{backgroundSize:"100%", backgroundRepeat: "no-repeat", height: "auto",padding: "30px", paddingTop:"50px",backgroundPosition: "top center",marginBottom: "50px"}}>
+        <div className={"single-main-slider bg-img slider-height-3 align-items-center custom-d-flex "} id="dosage" style={{backgroundSize:"100%", backgroundRepeat: "no-repeat", height: "auto",padding: "30px", paddingTop:"50px",backgroundPosition: "top center",marginBottom: "50px"}}>
               <div className="container text ">
                 <div className="row">
                     <h2 style={{width: "100%",color: "#E67F1A", marginBottom: "30px", textAlign:"center"}}>DOSAGE</h2>
@@ -232,7 +245,7 @@ class ProductDetail extends Component {
             </div>
         </div>
 
-        <header className={"footer-area section-padding-1 mb-50 "+(this.state.tabActivate===5?'':'d-none')} style={{background: "#BFE090"}}>
+        <header className={"footer-area section-padding-1 mb-50 "} style={{background: "#BFE090"}} id="precautions">
             <div className="container-fluid">
                 <div className="footer-top pt-20 pb-20 p-0">
                     <h2 style={{width: "100%",color: "#E67F1A", marginBottom: "30px", textAlign:"center"}}>PRECAUTIONS</h2>
